@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->dateTime('date');
             $table->string('location');
-            $table->string('type');
+            $table->string('tag');
             $table->longText('description');
             $table->enum('visibility', ['public', 'restricted'])->default('public');
             $table->string('image');
