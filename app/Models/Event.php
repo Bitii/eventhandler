@@ -27,14 +27,6 @@ class Event extends Model
         'visibility',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'date' => 'datetime',
-    ];
 
     /**
      * Get the user that owns the event.
