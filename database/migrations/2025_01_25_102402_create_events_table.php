@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('tag');
             $table->longText('description');
             $table->enum('visibility', ['public', 'restricted'])->default('public');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
