@@ -43,6 +43,10 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a href="/dashboard" class="dropdown-item">Dashboard</a>
+                            <a href="/profile/{{Auth::user()->id}}" class="dropdown-item">Profile</a>
+
+                            {{-- Logout dropdown --}}
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
@@ -51,7 +55,6 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                            <a href="/dashboard" class="dropdown-item">Dashboard</a>
                         </div>
                     </li>
                 @endguest
