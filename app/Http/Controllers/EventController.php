@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -35,7 +36,8 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $event = Event::find($id);
+        return view('event', ['event' => $event]);
     }
 
     /**

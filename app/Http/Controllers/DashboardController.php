@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+
 class DashboardController extends Controller
 {
     /**
@@ -21,6 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $events = Event::all();
+        return view('dashboard',['events' => $events]);
     }
 }
