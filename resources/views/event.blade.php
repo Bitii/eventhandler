@@ -21,7 +21,7 @@
                                     <x-tags :tagsCsv="$event->tag" />
                                 </p>
                                 <p class="text-end"><small class="text-body-secondary">Last updated
-                                        {{$event->updated_at->diffForHumans()}}</small>
+                                    {{$event->updated_at->diffForHumans()}}</small>
                                 </p>
                             </div>
                         </div>

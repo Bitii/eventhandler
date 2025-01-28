@@ -23,12 +23,14 @@
                                 </a>
                                 <p class="card-text">{{$event->description}}</p>
                                 <p class="card-text">{{$event->location}}</p>
-                                <p class="card-text">
-                                    <x-tags :tagsCsv="$event->tag" />
-                                </p>
-                                <p class="card-text"><small class="text-body-secondary">Last updated
-                                        {{$event->updated_at->diffForHumans()}}</small>
-                                </p>
+                                <div class="col-md-8 position-absolute bottom-0 end-0 mx-3">
+                                    <p class="card-text">
+                                        <x-tags :tagsCsv="$event->tag" />
+                                    </p>
+                                    <p class="text-end"><small class="text-body-secondary">Last updated
+                                            {{$event->updated_at->diffForHumans()}}</small>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
