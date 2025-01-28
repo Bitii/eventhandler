@@ -4,7 +4,7 @@
 $tags = explode(',', $tagsCsv);
 @endphp
 
-<div class="tags">
+<div class="tags text-end">
     @foreach ($tags as $tag)
     @if(!empty(trim($tag)))
     <a href="/?tag={{trim($tag)}}" class="text-decoration-none">
