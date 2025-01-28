@@ -29,6 +29,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Résztvevők</div>
+                <div class="card-body">
+                    <div class="row">
+                        {{-- @foreach ($users as $user) --}}
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                        </ul>
+                        {{-- @endforeach --}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
