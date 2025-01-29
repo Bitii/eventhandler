@@ -34,13 +34,7 @@
                 <div class="card-header">Résztvevők</div>
                 <div class="card-body">
                     <div class="row">
-                        {{-- @foreach ($users as $user) --}}
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                        </ul>
-                        {{-- @endforeach --}}
+                        <x-eventParticipants :users="$users" />
                     </div>
                 </div>
             </div>

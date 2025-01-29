@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\EventParticipant;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -37,7 +39,12 @@ class EventController extends Controller
     public function show(string $id)
     {
         $event = Event::find($id);
-        return view('event', ['event' => $event]);
+        $usersId = EventParticipant::where('event_id', $id)->get('user_id');
+        foreach ($usersId as $userId) {
+            $users[] = User::find($userId->user_id);
+        }
+        //dd($users);
+        return view('event', ['event' => $event, 'users' => $users]);
     }
 
     /**
