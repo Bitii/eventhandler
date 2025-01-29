@@ -38,13 +38,18 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        $event = Event::find($id);
+        /* $event = Event::find($id);
         $usersId = EventParticipant::where('event_id', $id)->get('user_id');
         foreach ($usersId as $userId) {
             $users[] = User::find($userId->user_id);
         }
-        //dd($users);
+        //dd($users); */
+
+        $event = Event::with(['participants.user'])->findOrFail($id);
+        $users = $event->participants->pluck('user');
+
         return view('event', ['event' => $event, 'users' => $users]);
+
     }
 
     /**
