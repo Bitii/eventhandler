@@ -12,6 +12,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('events', EventController::class);
+
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/event/{id}', [EventController::class, 'show']);
 Route::get('/profile/{id}', [UserController::class, 'show']);

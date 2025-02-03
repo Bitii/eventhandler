@@ -6,7 +6,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header mb-2">{{$event->name}}</div>
+                
+                <div class="card-header mb-2 d-flex justify-content-between">{{$event->name}} 
+                    <form action="POST" id="addParticipant">
+                        <input type="text" name="event_id" value="{{$event->id}}" hidden>
+                        <input type="text" name="user_id" value="{{Auth::user()->id}}" hidden>
+                        @csrf
+                        @if (!$event->participants->contains('user_id', Auth::user()->id))
+                        <button class="btn btn-success" type="button">
+                            +
+                        </button>
+                        @endif
+                    </form>
+                </div>
                 <div class="card-body m-auto">
                     <div class="row g-0">
                         <div class="col-md-4">

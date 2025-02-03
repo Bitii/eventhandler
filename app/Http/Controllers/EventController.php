@@ -30,7 +30,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response('ok', 200);
     }
 
     /**
