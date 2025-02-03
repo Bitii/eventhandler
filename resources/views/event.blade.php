@@ -8,10 +8,10 @@
             <div class="card">
                 
                 <div class="card-header mb-2 d-flex justify-content-between">{{$event->name}} 
-                    <form action="POST" id="addParticipant">
-                        <input type="text" name="event_id" value="{{$event->id}}" hidden>
-                        <input type="text" name="user_id" value="{{Auth::user()->id}}" hidden>
+                    <form action="" method="POST" id="addParticipant">
                         @csrf
+                        <input type="text" name="eventId" value="{{$event->id}}" hidden>
+                        <input type="text" name="userId" value="{{Auth::user()->id}}" hidden>
                         @if (!$event->participants->contains('user_id', Auth::user()->id))
                         <button class="btn btn-success" type="button">
                             +
@@ -46,7 +46,7 @@
                 <div class="card-header">Résztvevők</div>
                 <div class="card-body">
                     <div class="row">
-                        <x-eventParticipants :users="$users" />
+                        <x-eventParticipants :users="$users" :event="$event" />
                     </div>
                 </div>
             </div>

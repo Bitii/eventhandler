@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\EventParticipant;
 use App\Models\Event;
+use Illuminate\Http\Request;
+use App\Models\EventParticipant;
 
-class EventController extends Controller
+class EventParticipantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,7 +29,20 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //dd($request->all());
+
+
+        $participant = EventParticipant::create([
+            'event_id' => $request->eventId,
+            'user_id' => $request->userId
+        ]);
+        //dd($participant);
+
+        return response()->json([
+            'message' => 'Felhasználó sikeresen hozzáadva!',
+            'participant' => $participant,
+            'status' => 200
+        ]);
     }
 
     /**
@@ -38,18 +50,7 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        /* $event = Event::find($id);
-        $usersId = EventParticipant::where('event_id', $id)->get('user_id');
-        foreach ($usersId as $userId) {
-            $users[] = User::find($userId->user_id);
-        }
-        //dd($users); */
-
-        $event = Event::with(['participants.user'])->findOrFail($id);
-        $users = $event->participants->pluck('user');
-
-        return view('event', ['event' => $event, 'users' => $users]);
-
+        //
     }
 
     /**
@@ -71,8 +72,16 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        //dd($eventParticipant);
+        $eventparticipant = EventParticipant::findOrFail($id);
+        //dd($eventparticipant);
+        $eventparticipant->delete();
+
+        return response()->json([
+            'message' => 'Felhasználó sikeresen törölve!',
+            'status' => 200,
+        ]);
     }
 }
