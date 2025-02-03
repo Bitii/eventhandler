@@ -11,7 +11,7 @@ $(function () {
         axios
             .post("/eventparticipants", formData)
             .then(function (response) {
-                console.log(response);
+                //console.log(response);
                 location.reload();
             })
             .catch(function (error) {
@@ -24,17 +24,17 @@ $(function () {
     let selectedEventId;
     $(document).on("click", "#userDelBtn", function (e) {
         selectedEventId = $(this).data("eventId");
-        console.log(selectedEventId);
+        //console.log(selectedEventId);
     });
 
     $("#delParticipant").on("click", function (e)
     {
         e.preventDefault();
-        console.log(selectedEventId);
+        //console.log(selectedEventId);
         axios
             .delete(`/eventparticipants/${selectedEventId}`)
             .then((response) => {
-                console.log(response);
+                //console.log(response);
                 location.reload();
             })
             .catch((error) => {
