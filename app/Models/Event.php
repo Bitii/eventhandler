@@ -43,4 +43,13 @@ class Event extends Model
     {
         return $this->hasMany(EventParticipant::class);
     }
+
+    /**
+    * Filter the query by a given tag
+    */
+    public function scopeFilter($query, array $filters){
+        if($filters ['tag'] ?? false){
+            return $query->where('tag', 'like', '%'.$filters['tag'].'%');
+        }
+    }
 }

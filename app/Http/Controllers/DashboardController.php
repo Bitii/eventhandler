@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 use App\Models\Event;
 
 class DashboardController extends Controller
@@ -23,7 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::latest()->filter(request(['tag']))->get();
         return view('dashboard',['events' => $events]);
     }
 }
