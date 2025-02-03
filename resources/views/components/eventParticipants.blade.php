@@ -3,9 +3,13 @@
 
 @foreach ($users as $user)
 <ul class="list-group list-group-flush">
-    <li class="list-group-item d-flex justify-content-between">{{$user->name}} <button id="userDelBtn" class="btn-close"
-            type="button" data-bs-toggle="modal" data-bs-target="#delUser"
-            data-event-id="{{$user->eventParticipant->first()->id}}"></button></li>
+    <li class="list-group-item d-flex justify-content-between">{{$user->name}}
+        @if (Auth::user()->id == $event->user_id)
+        <button id="userDelBtn" class="btn-close" type="button" data-bs-toggle="modal" data-bs-target="#delUser"
+            data-event-id="{{$user->eventParticipant->first()->id}}">
+        </button>
+        @endif
+    </li>
 </ul>
 @endforeach
 
