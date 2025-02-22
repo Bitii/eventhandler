@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\EventParticipant;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -30,21 +28,17 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
      * Display the specified resource.
+     * @param string $id
+     * @return \Illuminate\View\View $view
+     *
      */
-    public function show(string $id)
+    public function show(string $id): \Illuminate\View\View
     {
-        /* $event = Event::find($id);
-        $usersId = EventParticipant::where('event_id', $id)->get('user_id');
-        foreach ($usersId as $userId) {
-            $users[] = User::find($userId->user_id);
-        }
-        //dd($users); */
-
         $event = Event::with(['participants.user'])->findOrFail($id);
         $users = $event->participants->pluck('user');
 
