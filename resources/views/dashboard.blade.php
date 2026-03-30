@@ -10,7 +10,7 @@
                     @foreach ($events as $event)
                     @if ($event->visibility == 'public')
 
-                    <div class="card mb-3"">
+                    <div class="card mb-3">
                             <div class=" row g-0">
                         <div class="col-md-4">
                             <img src="{{ $event->image == '' ? asset('storage/' . $event->image) : asset('images/no-image.png') }}"
